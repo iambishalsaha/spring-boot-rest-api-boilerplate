@@ -28,6 +28,11 @@ be something very similar to this.
 - Dockerfile for containerization
 - Docker Compose for easy database setup
 
+## Upcoming Features
+
+- Enable/Disable user.
+- Lock/Unlock user account upon consecutive failed login attempts.
+
 ## Testing
 
 ### Performance Testing
