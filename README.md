@@ -1,7 +1,6 @@
-# Spring Boot REST API Boilerplate
-
 ![PagueiBaratoLogo](https://raw.githubusercontent.com/iambishalsaha/spring-boot-rest-api-boilerplate/refs/heads/main/github-banner.webp)
 
+# Spring Boot REST API Boilerplate
 
 A boilerplate for Spring Boot with JWT authentication, email functionalities, and
 much more.
