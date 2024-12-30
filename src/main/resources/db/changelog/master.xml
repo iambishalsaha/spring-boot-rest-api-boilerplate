@@ -4,6 +4,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <includeAll path="./migrations" relativeToChangelogFile="true"/>
-
+    <!--includeAll path="./migrations" relativeToChangelogFile="true"/-->
+    <include file="db/changelog/2024/12/30-01-changelog.xml"/>
+    <include file="db/changelog/2024/12/30-02-changelog.xml"/>
+    <include file="db/changelog/2024/12/30-03-changelog.xml"/>
 </databaseChangeLog>

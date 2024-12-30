@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.29.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1735564366055-1" author="bishal">
+        <createTable tableName="role_permissions">
+            <column name="privilege_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role_permissions"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role_permissions"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1735564366055-2" author="bishal">
+        <createTable tableName="roles">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column defaultValueBoolean="true" name="removable" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1735564366055-3" author="bishal">
+        <addUniqueConstraint columnNames="name" constraintName="uk_role_name" tableName="roles"/>
+    </changeSet>
+    <changeSet id="1735564366055-4" author="bishal">
+        <createIndex indexName="idx_role_name" tableName="roles" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1735564366055-5" author="bishal">
+        <addForeignKeyConstraint baseColumnNames="privilege_id" baseTableName="role_permissions"
+                                 constraintName="fk_rolper_on_permission" referencedColumnNames="id"
+                                 referencedTableName="permissions"/>
+    </changeSet>
+    <changeSet id="1735564366055-6" author="bishal">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="role_permissions"
+                                 constraintName="fk_rolper_on_role" referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -4,6 +4,7 @@ A boilerplate for Spring Boot with JWT authentication, email functionalities, an
 much more.
 
 ## Overview
+
 **Spring Boot REST API Boilerplate** is a Spring Boot boilerplate that
 provides a solid foundation for building web applications with
 JWT authentication, CORS filters, email functionalities, and more.
@@ -14,6 +15,7 @@ if possible send improvements to this project, I will insert crud abstraction he
 be something very similar to this.
 
 ## Features
+
 - JWT authentication
 - CORS filter configuration
 - Token provider and JWT authentication filter
@@ -27,5 +29,20 @@ be something very similar to this.
 - Docker Compose for easy database setup
 
 ## Testing
+
 ### Performance Testing
-**jMeter**
+
+- **jMeter**
+
+## Code Quality & Coverage
+
+In **Spring Boot REST API Boilerplate**, integrating SonarQube with JaCoCo has been instrumental in maintaining high code
+quality and ensuring thorough test coverage. JaCoCo is configured in the build system (Maven or Gradle) to generate
+detailed XML reports on line, branch, and instruction coverage during test execution. These coverage reports are
+seamlessly fed into SonarQube, which acts as the central hub for code quality analysis. SonarQube not only visualizes
+test coverage but also provides actionable insights into potential code smells, vulnerabilities, and duplications in the
+project. This setup enables you to monitor untested paths in **Spring Boot REST API Boilerplate** endpoints, enforce minimum coverage
+thresholds, and ensure that critical business logic is rigorously tested.
+
+- [sonarQube](https://www.sonarsource.com/products/sonarqube/)
+- [JaCoCo](https://www.eclemma.org/jacoco/)
