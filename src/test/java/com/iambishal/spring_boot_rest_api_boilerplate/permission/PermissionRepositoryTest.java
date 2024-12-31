@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
 @Testcontainers
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 class PermissionRepositoryTest {
 
     @Container
