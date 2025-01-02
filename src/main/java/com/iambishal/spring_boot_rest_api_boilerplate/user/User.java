@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class represents a User entity within the application. It stores user-related information
@@ -33,11 +33,12 @@ import java.util.Set;
 @Entity
 @Table(
         name = "users",
-        indexes = {
-                @Index(name = "idx_email", columnList = "email", unique = true),
-        },
         uniqueConstraints = {
-                @UniqueConstraint(name = "uk_email", columnNames = "email"),
+                @UniqueConstraint(name = "uk_users_email", columnNames = "email"),
+        },
+        indexes = {
+                @Index(name = "idx_users_first_name", columnList = "first_name", unique = true),
+                @Index(name = "idx_users_last_name", columnList = "last_name", unique = true),
         }
 )
 public class User extends BaseEntity {
@@ -86,8 +87,30 @@ public class User extends BaseEntity {
      */
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id",
+                    nullable = false,
+                    foreignKey = @ForeignKey(
+                            name = "FK_user_roles_user_id",
+                            foreignKeyDefinition = "FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE"
+                    )
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id",
+                    referencedColumnName = "id",
+                    nullable = false,
+                    foreignKey = @ForeignKey(
+                            name = "FK_user_roles_role_id",
+                            foreignKeyDefinition = "FOREIGN KEY (role_id) REFERENCES roles (id) ON DELETE CASCADE"
+                    )
+            ),
+            uniqueConstraints = {
+                    @UniqueConstraint(
+                            name = "UK_user_roles_user_id_role_id",
+                            columnNames = {"user_id", "role_id"}
+                    )
+            }
     )
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 }

@@ -1,21 +1,87 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/}
+  # CORS network error (URL scheme must be "http" or "https" for CORS request) solution.
+  # Ref: https://stackoverflow.com/a/73376127
+  forward-headers-strategy: framework
+
+app:
+  secret: ${APP_SECRET:c04nKbDFfJ2v0XSRtNKHQQq5Km3zMSZxla7paMSUzBOI/ORhgnTC7eJrqqEZQGKm}
+  jwt:
+    access-token:
+      expires-in: ${APP_JWT_TOKEN_EXPIRES_IN:#{60 * 60 * 1000}} # 60 minutes in milliseconds
+    refresh-token:
+      expires-in: ${APP_JWT_REFRESH_TOKEN_EXPIRES_IN:#{24 * 60 * 60 * 1000}} # 24 hours in milliseconds
+    remember-me:
+      expires-in: ${APP_JWT_REMEMBER_ME_EXPIRES_IN:#{24 * 60 * 60 * 1000 * 7}} # 7 days in milliseconds
+  default-locale: ${APP_DEFAULT_LOCALE:en}
+  default-timezone: ${APP_DEFAULT_TIMEZONE:Asia/Kolkata}
+  url: ${APP_URL:http://localhost:${server.port}}
+  frontend-url: ${APP_FRONTEND_URL:http://localhost:4200}
+
 spring:
   application:
-    name: spring-boot-rest-api-boilerplate
+    name: ${APP_NAME:AppName}
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: ${DB_DDL_AUTO:none}
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-  liquibase:
+        show_sql: true
+    open-in-view: false
+  thymeleaf:
     enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    cache: false
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:25}
+    username: ${MAIL_USERNAME:test}
+    password: ${MAIL_PASSWORD:test}
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          ssl:
+            enable: ${MAIL_SSL:false}
+          tls:
+            enable: ${MAIL_TLS:false}
+  liquibase:
+    enabled: ${LIQUIBASE_ENABLED:true}
     change-log: classpath:/db/changelog/master.xml
 
 springdoc:
   api-docs:
-    enabled: true
+    enabled: ${API_DOCS_ENABLED:true}
     path: /api-docs
   swagger-ui:
-    path: /swagger-ui
-    enabled: true
+    enabled: ${SWAGGER_ENABLED:true}
+    operationsSorter: alpha
+    tagsSorter: alpha
+    path: ${SWAGGER_PATH:/swagger-ui}
+  show-actuator: true
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT:INFO}
+    org:
+      springframework:
+        web: ${LOGGING_LEVEL_SPRING:INFO}
+      hibernate:
+        type: ${LOGGING_LEVEL_HIBERNATE:INFO}
+  file:
+    name: ./var/logs/app.log
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n'
+  logback:
+    rollingpolicy:
+      file-name-pattern: ./var/logs/app.%d{yyyy-MM-dd}.%i.log
+      max-file-size: 1MB
+      max-history: 30
