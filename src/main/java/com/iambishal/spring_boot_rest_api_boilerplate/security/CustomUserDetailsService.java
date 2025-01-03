@@ -1,7 +1,7 @@
 package com.iambishal.spring_boot_rest_api_boilerplate.security;
 
-import com.iambishal.spring_boot_rest_api_boilerplate.user.User;
-import com.iambishal.spring_boot_rest_api_boilerplate.user.UserRepository;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.user.User;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

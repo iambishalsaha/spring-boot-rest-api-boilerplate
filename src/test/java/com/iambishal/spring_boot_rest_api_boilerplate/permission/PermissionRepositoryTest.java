@@ -1,12 +1,13 @@
 package com.iambishal.spring_boot_rest_api_boilerplate.permission;
 
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.permission.Permission;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.permission.PermissionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;

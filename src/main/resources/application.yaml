@@ -32,6 +32,17 @@ spring:
         format_sql: true
         show_sql: true
     open-in-view: false
+  data:
+    redis:
+      database: ${REDIS_DATABASE:0}
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:secret}
+      timeout: ${REDIS_TIMEOUT:60000}
+      lettuce:
+        pool:
+          max-active: ${REDIS_MAX_ACTIVE:8}
+          max-idle: ${REDIS_MAX_IDLE:8}
   thymeleaf:
     enabled: true
     prefix: classpath:/templates/

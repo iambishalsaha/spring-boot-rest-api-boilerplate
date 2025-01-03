@@ -1,4 +1,4 @@
-package com.iambishal.spring_boot_rest_api_boilerplate.permission;
+package com.iambishal.spring_boot_rest_api_boilerplate.domain.permission;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.iambishal.spring_boot_rest_api_boilerplate.permission;
+package com.iambishal.spring_boot_rest_api_boilerplate.domain.permission;
 
-import com.iambishal.spring_boot_rest_api_boilerplate.role.RoleDto;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.role.RoleDto;
 
 import java.io.Serializable;
 import java.util.Set;

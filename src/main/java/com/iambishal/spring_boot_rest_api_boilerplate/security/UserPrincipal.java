@@ -1,7 +1,7 @@
 package com.iambishal.spring_boot_rest_api_boilerplate.security;
 
-import com.iambishal.spring_boot_rest_api_boilerplate.role.Role;
-import com.iambishal.spring_boot_rest_api_boilerplate.user.User;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.role.Role;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

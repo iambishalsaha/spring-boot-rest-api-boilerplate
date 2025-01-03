@@ -1,4 +1,4 @@
-package com.iambishal.spring_boot_rest_api_boilerplate.user;
+package com.iambishal.spring_boot_rest_api_boilerplate.domain.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

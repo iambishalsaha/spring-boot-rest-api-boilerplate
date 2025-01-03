@@ -1,6 +1,6 @@
-package com.iambishal.spring_boot_rest_api_boilerplate.permission;
+package com.iambishal.spring_boot_rest_api_boilerplate.domain.permission;
 
-import com.iambishal.spring_boot_rest_api_boilerplate.role.Role;
+import com.iambishal.spring_boot_rest_api_boilerplate.domain.role.Role;
 import com.iambishal.spring_boot_rest_api_boilerplate.shared.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
